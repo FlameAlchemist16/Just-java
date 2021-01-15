@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         f=false;
         extra1="";
         extra2="";
-        wc=0;ct=0;
+        ct=0;wc=0;
         setContentView(R.layout.activity_main);
     }
     /**
