@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Just java</string>
+    <string name="intro">Welcome to "Just Java" coffee shop :)</string>
+    <string name="customerName">Please enter your Name here</string>
+    <string name="quantity">Quantity</string>
+    <string name="Extras">Add This to my coffee -</string>
+    <string name="Extras1">Extra whipped cream</string>
+    <string name="Extras2">Chocolate</string>
+    <string name="order">your order summary</string>
+</resources>
