@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
+    int quantity = 0,wc=0,ct=0;
     EditText nameOfCustomer;
     boolean onCheck=false;
     String extra1="",extra2="";
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         return name;
     }
     public void submitOrder(View view) {
-        displayPrice("Name: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*10+"\nThank you! Come again");
+        displayPrice("Name: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\nThank you! Come again");
     }
     public void increment(View view){
         quantity = quantity +1;
@@ -48,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.checkbox1:
                 if(onCheck){
                     extra1 = "Whipped cream";
+                    wc=1;
                     f=true;
                 }
                 break;
             case R.id.checkbox2:
-                if(onCheck&&f) extra2 = "+ Chocolate";
-                else if(onCheck) extra2 = "Chocolate";
+                if(onCheck&&f){extra2 = "+ Chocolate";ct=1;}
+                else if(onCheck){extra2 = "Chocolate";ct=1;}
                 break;
         }
     }
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         f=false;
         extra1="";
         extra2="";
+        wc=0;ct=0;
         setContentView(R.layout.activity_main);
     }
     /**
