@@ -32,10 +32,11 @@ public class MainActivity extends AppCompatActivity {
         return name;
     }
     public void submitOrder(View view) {
-        displayPrice("Name: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\nThank you! Come again");
+        displayPrice("YOUR ORDER SUMMARY\nName: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\nThank you! Come again");
+//        Intent intent_email=new Intent(Intent.ACTION_SEND);
     }
     public void increment(View view){
-        quantity = quantity +1;
+        if(quantity<100)quantity = quantity +1;
         display(quantity);
     }
     public void decrement(View view){
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         extra2="";
         ct=0;wc=0;
         setContentView(R.layout.activity_main);
+
     }
     /**
      * This method displays the given quantity value on the screen.
@@ -78,10 +80,5 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(summary);
     }
-    private void checkDenial(){
-        CheckBox checking1 = (CheckBox) findViewById(R.id.checkbox1);
-        checking1.setChecked(false);
-        CheckBox checking2= (CheckBox) findViewById(R.id.checkbox2);
-        checking2.setChecked(false);
-    }
+
 }
