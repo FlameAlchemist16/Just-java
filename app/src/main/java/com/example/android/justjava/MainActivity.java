@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         return name;
     }
     public void submitOrder(View view) {
-        String oSum ="YOUR ORDER SUMMARY\n\nName: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\nThank you! Come again";
+        String oSum =getString(R.string.order)+"\n\nName: "+displayName()+"\nYour Order\n\t"+getString(R.string.quantity)+": "+quantity+"\n\tExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\n"+getString(R.string.greeting);
         Intent intent_email=new Intent(Intent.ACTION_SENDTO);
         intent_email.setData(Uri.parse("mailto:"));
         intent_email.putExtra(Intent.EXTRA_SUBJECT, "Order Summary");

@@ -6,5 +6,6 @@
     <string name="Extras">Add This to my coffee -</string>
     <string name="Extras1">Extra whipped cream</string>
     <string name="Extras2">Chocolate</string>
-    <string name="order">your order summary</string>
+    <string name="order">YOUR ORDER SUMMARY</string>
+    <string name="greeting">Thank you! Come again</string>
 </resources>
