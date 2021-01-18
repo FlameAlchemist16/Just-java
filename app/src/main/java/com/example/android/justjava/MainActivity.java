@@ -39,9 +39,7 @@ public class MainActivity extends AppCompatActivity {
         intent_email.setData(Uri.parse("mailto:"));
         intent_email.putExtra(Intent.EXTRA_SUBJECT, "Order Summary");
         intent_email.putExtra(Intent.EXTRA_TEXT,oSum);
-//        Intent chooser = Intent.createChooser(intent_email,"Send order summary with:");
         if(intent_email.resolveActivity(getPackageManager())!=null){
-//            startActivity(chooser);
             startActivity(intent_email);
         }
     }
