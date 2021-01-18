@@ -1,6 +1,8 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -32,8 +34,16 @@ public class MainActivity extends AppCompatActivity {
         return name;
     }
     public void submitOrder(View view) {
-        displayPrice("YOUR ORDER SUMMARY\nName: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\nThank you! Come again");
-//        Intent intent_email=new Intent(Intent.ACTION_SEND);
+        String oSum ="YOUR ORDER SUMMARY\n\nName: "+displayName()+"\nYour Order\nQuantity: "+quantity+"\nExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\nThank you! Come again";
+        Intent intent_email=new Intent(Intent.ACTION_SENDTO);
+        intent_email.setData(Uri.parse("mailto:"));
+        intent_email.putExtra(Intent.EXTRA_SUBJECT, "Order Summary");
+        intent_email.putExtra(Intent.EXTRA_TEXT,oSum);
+//        Intent chooser = Intent.createChooser(intent_email,"Send order summary with:");
+        if(intent_email.resolveActivity(getPackageManager())!=null){
+//            startActivity(chooser);
+            startActivity(intent_email);
+        }
     }
     public void increment(View view){
         if(quantity<100)quantity = quantity +1;
@@ -75,10 +85,6 @@ public class MainActivity extends AppCompatActivity {
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-    }
-    private void displayPrice(String summary) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(summary);
     }
 
 }
