@@ -1,11 +1,14 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Just java</string>
     <string name="intro">Welcome to "Just Java" coffee shop :)</string>
     <string name="customerName">Please enter your Name here</string>
     <string name="quantity">Quantity</string>
     <string name="Extras">Add This to my coffee -</string>
-    <string name="Extras1">Extra whipped cream</string>
+    <string name="Extras1">Whipped cream</string>
     <string name="Extras2">Chocolate</string>
     <string name="order">YOUR ORDER SUMMARY</string>
     <string name="greeting">Thank you! Come again</string>
+    <string name="reset">RESET</string>
+    <string name="orderButton">ORDER</string>
+    <string name="quickSummary">Name: <xliff:g id="name" example="Jack">%s</xliff:g> \nYour Order\n  Quantity: <xliff:g id="quantity" example="2">%d</xliff:g>\n  Extras: <xliff:g id="name" example="cream">%s</xliff:g><xliff:g id="name" example="chocolate">%s</xliff:g> \nTotal: <xliff:g id="sum" example="2">%d</xliff:g>\nThank you! Come again</string>
 </resources>

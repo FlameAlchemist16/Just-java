@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/c"
         android:orientation="vertical"
         tools:context=".MainActivity">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +29,8 @@
             android:hint="@string/customerName"
             android:inputType="textPersonName"
             android:textColor="@android:color/black"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/black"
+            android:autofillHints="name" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:onClick="reset"
-                android:text="RESET"/>
+                android:text="@string/reset"/>
 
         </LinearLayout>
 
@@ -116,8 +119,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:onClick="submitOrder"
-            android:text="ORDER"/>
-
+            android:text="@string/orderButton"/>
 
     </LinearLayout>
+
 </ScrollView>

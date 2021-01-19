@@ -1,6 +1,7 @@
 package com.example.android.justjava;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private String displayName(){
         nameOfCustomer =(EditText) findViewById(R.id.name_description);
-        String name = nameOfCustomer.getText().toString();
-        return name;
+        return nameOfCustomer.getText().toString();
     }
+    @SuppressLint({"QueryPermissionsNeeded", "StringFormatMatches"})
     public void submitOrder(View view) {
-        String oSum =getString(R.string.order)+"\n\nName: "+displayName()+"\nYour Order\n\t"+getString(R.string.quantity)+": "+quantity+"\n\tExtras: "+extra1+extra2+"\nTotal Bill: "+quantity*(10+wc+2*ct)+"\n"+getString(R.string.greeting);
+        String name = displayName();
         Intent intent_email=new Intent(Intent.ACTION_SENDTO);
         intent_email.setData(Uri.parse("mailto:"));
-        intent_email.putExtra(Intent.EXTRA_SUBJECT, "Order Summary");
-        intent_email.putExtra(Intent.EXTRA_TEXT,oSum);
+        intent_email.putExtra(Intent.EXTRA_SUBJECT,R.string.order);
+        intent_email.putExtra(Intent.EXTRA_TEXT,getString(R.string.order)+"\n"+getString(R.string.quickSummary,name,quantity,extra1,extra2,quantity*(10+2*wc+ct)));
         if(intent_email.resolveActivity(getPackageManager())!=null){
             startActivity(intent_email);
         }
@@ -51,19 +52,20 @@ public class MainActivity extends AppCompatActivity {
         if(quantity>0) quantity = quantity -1;
         display(quantity);
     }
+    @SuppressLint("NonConstantResourceId")
     public void checkBox(View view){
         onCheck =((CheckBox) view).isChecked();
         switch (view.getId()) {
             case R.id.checkbox1:
                 if(onCheck){
-                    extra1 = "Whipped cream";
+                    extra1 =getString(R.string.Extras1);
                     wc=1;
                     f=true;
                 }
                 break;
             case R.id.checkbox2:
-                if(onCheck&&f){extra2 = "+ Chocolate";ct=1;}
-                else if(onCheck){extra2 = "Chocolate";ct=1;}
+                if(onCheck&&f){extra2 = "+"+getString(R.string.Extras2);ct=1;}
+                else if(onCheck){extra2 = getString(R.string.Extras2);ct=1;}
                 break;
         }
     }
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
+    @SuppressLint("SetTextI18n")
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
